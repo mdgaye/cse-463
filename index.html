@@ -57,6 +57,7 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-size: 24px; /* Adjusting the font size for the icon */
         }
 
         .cart-icon:hover {
@@ -418,13 +419,11 @@
             <span>100%</span>
         </div>
 
-        <!-- Shopping Cart Page -->
         <div class="page active" id="cart-page">
             <div class="header">
                 <h2>Your Cart</h2>
                 <div class="cart-icon" onclick="toggleCart()">
-                    Cart
-                    <span class="cart-badge" id="cart-count">3</span>
+                    <span style="font-size: 24px;">🛒</span> <span class="cart-badge" id="cart-count">3</span>
                 </div>
             </div>
 
@@ -518,7 +517,6 @@
             </button>
         </div>
 
-        <!-- Checkout Page -->
         <div class="page" id="checkout-page">
             <div class="header">
                 <h2>Checkout</h2>
@@ -588,7 +586,6 @@
             </div>
         </div>
 
-        <!-- Order Confirmation Page -->
         <div class="page" id="confirmation-page">
             <div class="header">
                 <h2>Order Confirmed</h2>
