@@ -57,7 +57,6 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 24px; /* Adjusting the font size for the icon */
         }
 
         .cart-icon:hover {
@@ -419,11 +418,15 @@
             <span>100%</span>
         </div>
 
+        <!-- Shopping Cart Page -->
         <div class="page active" id="cart-page">
             <div class="header">
                 <h2>Your Cart</h2>
                 <div class="cart-icon" onclick="toggleCart()">
-                    <span style="font-size: 24px;">🛒</span> <span class="cart-badge" id="cart-count">3</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                    </svg>
+                    <span class="cart-badge" id="cart-count">3</span>
                 </div>
             </div>
 
@@ -488,7 +491,9 @@
             </div>
 
             <div class="collapsed-state hidden" id="collapsed-state">
-                <h3>Cart</h3>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="#6b7280" style="margin: 0 auto 15px;">
+                    <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03L21.7 4H5.21l-.94-2H1zm16 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
                 <p>Your cart is collapsed</p>
                 <button class="expand-btn" onclick="toggleCart()">Expand Cart</button>
             </div>
@@ -517,6 +522,7 @@
             </button>
         </div>
 
+        <!-- Checkout Page -->
         <div class="page" id="checkout-page">
             <div class="header">
                 <h2>Checkout</h2>
@@ -555,6 +561,16 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="apple-pay-message" id="apple-pay-message" style="display: none;">
+                        <div style="text-align: center; padding: 20px; background: #f8fafc; border-radius: 8px; color: #6b7280;">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" style="margin-bottom: 10px;">
+                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                            </svg>
+                            <p><strong>Apple Pay Selected</strong></p>
+                            <p>Payment will be processed securely through Apple Pay</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-section">
@@ -586,6 +602,7 @@
             </div>
         </div>
 
+        <!-- Order Confirmation Page -->
         <div class="page" id="confirmation-page">
             <div class="header">
                 <h2>Order Confirmed</h2>
@@ -721,12 +738,16 @@
             });
             event.target.classList.add('active');
 
-            // Show/hide card form
+            // Show/hide card form and Apple Pay message
             const cardForm = document.getElementById('card-form');
+            const applePayMessage = document.getElementById('apple-pay-message');
+            
             if (method === 'applepay') {
                 cardForm.classList.add('hidden');
+                applePayMessage.style.display = 'block';
             } else {
                 cardForm.classList.remove('hidden');
+                applePayMessage.style.display = 'none';
             }
         }
 
